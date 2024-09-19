@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_REPOSITORIES } from "../queries/repository.query";
 import { AppContext } from "../App";
+import "./Repositories.css";
 
 const Repositories = () => {
   const { developerToken } = useContext(AppContext);
@@ -21,27 +22,41 @@ const Repositories = () => {
 
   return (
     <div>
-      <ul>
-        {data?.repositories?.map((repo) => {
-          const isOxsecurityAssignmentRepo = repo.name
-            .toLowerCase()
-            .includes("oxsecurity");
+      <table className="repositories-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
 
-          return (
-            <li key={repo.name}>
-              {isOxsecurityAssignmentRepo ? (
-                <strong>{repo.name}</strong>
-              ) : (
-                repo.name
-              )}
-              - {repo.size} KB - {repo.owner}
-              <button onClick={() => handleSelectRepository(repo.name)}>
-                Fetch Details
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+        <tbody>
+          {data?.repositories?.map((repo) => {
+            const isOxsecurityAssignmentRepo = repo.name
+              .toLowerCase()
+              .includes("oxsecurity");
+
+            return (
+              <tr
+                key={repo.name}
+                onClick={() => handleSelectRepository(repo.name)}
+                className="clickable-row"
+              >
+                <td>
+                  {isOxsecurityAssignmentRepo ? (
+                    <strong>{repo.name}</strong>
+                  ) : (
+                    repo.name
+                  )}
+                </td>
+                <td>{repo.size}</td>
+                <td>{repo.owner}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };

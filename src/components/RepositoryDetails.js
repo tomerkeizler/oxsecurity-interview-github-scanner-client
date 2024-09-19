@@ -27,11 +27,25 @@ const RepositoryDetails = () => {
       <div>
         <h2>Details for {details.name}</h2>
 
-        <p>Name: {details.name}</p>
-        <p>Size: {details.size} KB</p>
-        <p>Owner: {details.owner}</p>
-        <p>Private: {details.isPrivate ? "Yes" : "No"}</p>
-        <p>Number of files: {details.numberOfFiles}</p>
+        <p>
+          Name: <strong>{details.name}</strong>
+        </p>
+
+        <p>
+          Size: <strong>{details.size} KB</strong>
+        </p>
+
+        <p>
+          Owner: <strong>{details.owner}</strong>
+        </p>
+
+        <p>
+          Private: <strong>{details.isPrivate ? "Yes" : "No"}</strong>
+        </p>
+
+        <p>
+          Number of files: <strong>{details.numberOfFiles}</strong>
+        </p>
 
         <p>random YAML file content:</p>
         <code>

@@ -1,0 +1,24 @@
+.repositories-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.repositories-table th,
+.repositories-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.repositories-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background-color: #f1f1f1;
+}
